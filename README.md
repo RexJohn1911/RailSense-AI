@@ -5,7 +5,7 @@
 
 1. PROJECT OVERVIEW
 -------------------
-RailSense (also referred to as TrainSense / RAIL//AI) is an end-to-end,
+RailSense is an end-to-end,
 multi-tiered railway operations, safety, and monitoring platform. It combines
 machine learning predictive intelligence, computer vision intrusion detection,
 real-time multi-sensor correlation, and role-based operator consoles to prevent
