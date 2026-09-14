@@ -1,47 +1,55 @@
-# TrainSense - Railway Operations and Safety Platform
+# 🚆 RailSense AI
 
-TrainSense is a real-time railway operations and safety platform built for 48-hour hackathon MVP.
+### AI-Native Railway Operations, Safety & Monitoring Platform
 
-## Backend Architecture
+RailSense AI is an end-to-end railway operations and safety platform that combines **machine learning, computer vision, real-time event processing, and multi-modal risk analysis** to assist railway operators in detecting operational conflicts, track intrusions, and emerging safety hazards.
 
-The backend is built with Python and FastAPI, designed to integrate:
-- **In-Memory Asynchronous Event Bus**: High-throughput event routing for sensor signals and telemetry.
-- **XGBoost Prediction Service**: Telemetry-based predictive maintenance and failure risk modeling.
-- **YOLOv8n Vision Service**: Real-time obstacle, track defect, and signal detection.
-- **Correlation Engine**: Multi-modal data fusion linking telemetry, vision, and operational logs.
-- **Risk Engine**: Continuous hazard scoring and dynamic safety alert generation.
-- **FastAPI REST & WebSockets**: Low-latency streaming and API endpoints for live dashboards.
+Built as a hackathon MVP, the platform is designed around a real-time architecture connecting railway telemetry, ML predictions, computer-vision alerts, event correlation, risk assessment, and role-specific operator interfaces.
 
-## Project Structure
+---
 
-```
-backend/
-├── app/
-│   ├── main.py          # FastAPI entry point
-│   ├── api/             # API routes & WebSocket endpoints
-│   ├── core/            # Config, security, database settings
-│   ├── models/          # ORM / DB models
-│   ├── schemas/         # Pydantic data schemas
-│   ├── services/        # Business logic services
-│   ├── event_bus/       # Async event pub/sub system
-│   ├── ml/              # XGBoost predictive models & inference
-│   ├── vision/          # YOLOv8 object detection service
-│   ├── correlation/     # Event correlation & fusion engine
-│   └── risk/            # Risk scoring & safety alerts
-├── tests/               # Unit and integration tests
-├── data/                # Sample datasets & test streams
-├── models/              # Pre-trained ML & Vision model weights
-├── requirements.txt
-├── .env.example
-└── README.md
-```
+## 🎯 Problem
 
-## Quickstart
+Modern railway operations generate large volumes of heterogeneous data:
 
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
+- Train telemetry
+- Signalling information
+- Operational events
+- Track-side camera feeds
+- Weather and environmental conditions
+- Train movement information
+
+Individually, these signals provide limited context.
+
+RailSense AI brings these signals together to create a **unified operational intelligence layer** that can detect potential conflicts, assess risk, and escalate safety-critical events to the appropriate railway operator.
+
+---
+
+## 💡 Solution
+
+RailSense AI combines multiple AI and software components into a single operational pipeline:
+
+```text
+Railway Telemetry
+       │
+       ├───────────────┐
+       │               │
+       ▼               ▼
+  ML Prediction    Computer Vision
+   XGBoost            YOLOv8
+       │               │
+       └───────┬───────┘
+               ▼
+        Event Correlation
+               │
+               ▼
+          Risk Engine
+               │
+       ┌───────┴────────┐
+       ▼                ▼
+ Safety Alerts      Escalation
+       │                │
+       └────────┬───────┘
+                ▼
+       Railway Operations
+           Dashboard
